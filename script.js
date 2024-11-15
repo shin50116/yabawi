@@ -1,6 +1,6 @@
 let currentLevel = 1;
 let maxLevelReached = 1;
-let baseSpeed = 630; // 700ms의 10% 빠른 속도
+let baseSpeed = 665; // 700ms의 5% 느린 속도
 let ballPosition = 0;
 let isShuffling = false;
 
