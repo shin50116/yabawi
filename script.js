@@ -39,7 +39,6 @@ function getCupCount(level) {
 }
 
 function getShuffleSpeed(level) {
-  // 각 레벨마다 10%씩 속도가 빨라짐
   return baseSpeed * 0.9 ** (level - 1);
 }
 
@@ -75,7 +74,6 @@ function hideBall() {
 function startShuffling(count, speed, level) {
   isShuffling = true;
   
-  // 난이도가 올라갈수록 섞는 시간이 증가 (5초 ~ 10초 사이에서 레벨에 따라 늘어남)
   let minShuffleTime = 5000;
   let maxShuffleTime = 10000;
   let shuffleDuration = minShuffleTime + (Math.random() * (maxShuffleTime - minShuffleTime) * (level / 20));
@@ -87,6 +85,7 @@ function startShuffling(count, speed, level) {
   setTimeout(() => {
     clearInterval(shuffleInterval);
     isShuffling = false;
+    arrangeCupsForFinding(count); // 겹치지 않게 배열
     statusText.textContent = `Level ${level}: 이제 찾으세요!`;
   }, shuffleDuration);
 }
@@ -107,6 +106,15 @@ function shuffleCups(count) {
     cup1.style.transform = `${getComputedStyle(cup2).transform} translateY(${offsetY1}px)`;
     cup2.style.transform = `${tempTransform} translateY(${offsetY2}px)`;
   }
+}
+
+function arrangeCupsForFinding(count) {
+  // 컵을 겹치지 않게 중앙에 정렬하여 간격을 두고 배치
+  const offset = -((count - 1) * 80); // 간격을 두고 배치하도록 설정
+  const cups = document.querySelectorAll(".cup");
+  cups.forEach((cup, i) => {
+    cup.style.transform = `translateX(${offset + i * 160}px) translateY(0)`; // 컵 간 간격을 넓힘
+  });
 }
 
 function checkCup(index) {
