@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #status-container {
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    top: 10px;
+    z-index: 10;
+  }
+  
+  #status-text {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  
+  .game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 80px;
+  }
+  
+  #game-title {
+    margin-top: 60px;
+  }
+  
+  #cups-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    position: relative;
+    height: 200px;
+  }
+  
+  .cup {
+    width: 80px;
+    height: 120px;
+    background-color: #d3d3d3;
+    border: 2px solid #333;
+    position: absolute;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* 짧은 시간으로 자연스러운 섞임 */
+  }
+  
+  .cup.moving {
+    z-index: 1;
+  }
+  
+  .ball {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 10px;
+    left: 30px;
+    display: none;
+  }
+  
+  .hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  #game-title.hidden,
+  #start-game.hidden {
+    display: none;
+  }
+  
